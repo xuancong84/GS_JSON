@@ -14,10 +14,11 @@ Benchmark results show tremendous improvement in speed especially in parsing JSO
 
 ```
 Generating huge JSON object ...Done
+Total length of all String objects = 537010898
 GS_JSON Benchmark:
-Converting JSON object to JSON string ... 3.535s
+Converting JSON object to JSON string ... 3.946s (output length=537021909)
 Converting JSON string to JSON object ...0.149s
 Java JSON library GSON Benchmark:
-Converting JSON object to JSON string ... 10.043s
-Converting JSON string to JSON object ...8.336s
+Converting JSON object to JSON string ... 9.632s (output length=1132769169)
+Converting JSON string to JSON object ...10.71s
 ```

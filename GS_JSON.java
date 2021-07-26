@@ -18,7 +18,7 @@ public class GS_JSON {
 	
 	// Benchmark: compare with standard Java JSON library
 	public static void main(String[] args) throws Exception {
-		long tm;
+		long tm=0;
 		Object obj;
 		String json_str;
 		
@@ -38,17 +38,19 @@ public class GS_JSON {
 			for(int j=0; j<i; ++j) {
 				obj1.put(random.nextInt(), rnd_str.apply(1<<i));
 				obj1.put(rnd_str.apply(16), rnd_str.apply(65536<<i));
+				tm += (1<<i) + 16 + (65536<<i);
 			}
 			json.add(obj1);
 		}
 		System.out.println("Done");
+		System.out.println("Total length of all String objects = " + tm);
 		
 		// 1. Time GS_JSON library
 		System.out.println("GS_JSON Benchmark:");
 		System.out.print("Converting JSON object to JSON string ... ");
 		tm = System.currentTimeMillis();
 		json_str = toJSON(json);
-		System.out.println((System.currentTimeMillis()-tm)/1000.0+"s");
+		System.out.println((System.currentTimeMillis()-tm)/1000.0+"s (output length="+json_str.length()+")");
 		System.out.print("Converting JSON string to JSON object ...");
 		tm = System.currentTimeMillis();
 		obj = GS_JSON.parse(json_str);
@@ -60,7 +62,7 @@ public class GS_JSON {
 		System.out.print("Converting JSON object to JSON string ... ");
 		tm = System.currentTimeMillis();
 		json_str = gson.toJson(json);
-		System.out.println((System.currentTimeMillis()-tm)/1000.0+"s");
+		System.out.println((System.currentTimeMillis()-tm)/1000.0+"s (output length="+json_str.length()+")");
 		System.out.print("Converting JSON string to JSON object ...");
 		tm = System.currentTimeMillis();
 		obj = gson.fromJson(json_str, ArrayList.class);
