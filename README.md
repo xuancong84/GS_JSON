@@ -1,5 +1,7 @@
 # GS_JSON (Giant-string JSON) for Java and Python
 
+![](GS_JSON.png)
+
 Nowadays, JSON is becoming more and more popular in mobile and various front-end/back-end development.
 As HTML5 supports base64 embedded audio/video/image, sometimes JSON strings are very large as it can contain base64 embedded media. However, since native JSON string encoding escapes all characters outside 0x20 and 0x7f (see <https://www.json.org/json-en.html> ), when the original string is super long, i.e., of many or even hundreds of megabytes, parsing a JSON string or serializing a JSON object will become very slow and energy inefficient (especially for mobile apps).
 
